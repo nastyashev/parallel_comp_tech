@@ -7,6 +7,7 @@ public class BounceFrame extends JFrame {
     private BallCanvas canvas;
     public static final int WIDTH = 450;
     public static final int HEIGHT = 350;
+
     public BounceFrame () {
         this.setSize(WIDTH, HEIGHT);
         this.setTitle("Bounce programm");
@@ -23,12 +24,14 @@ public class BounceFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                Ball b = new Ball(canvas);
-                canvas.add(b);
+                for (int i = 0; i < 10; i++){
+                    Ball b = new Ball(canvas);
+                    canvas.add(b);
 
-                BallThread thread = new BallThread(b);
-                thread.start();
-                System.out.println("Thread name = " + thread.getName());
+                    BallThread thread = new BallThread(b);
+                    thread.start();
+                    System.out.println("Thread name = " + thread.getName());
+                }
             }
         });
         buttonStop.addActionListener(new ActionListener() {
