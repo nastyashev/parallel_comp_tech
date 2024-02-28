@@ -7,14 +7,13 @@ public class BounceFrame extends JFrame {
     private BallCanvas canvas;
     public static final int WIDTH = 450;
     public static final int HEIGHT = 350;
-    public static final int BLUE_BALLS_COUNT = 50;
-    public static final int RED_BALLS_COUNT = 200;
+    public static final int BLUE_BALLS_COUNT = 100;
+    public static final int RED_BALLS_COUNT = 1;
 
     public BounceFrame () {
         this.setSize(WIDTH, HEIGHT);
         this.setTitle("Bounce programm");
         this.canvas = new BallCanvas();
-        //System.out.println("In Frame Thread name = " + Thread.currentThread().getName());
         Container content = this.getContentPane();
         content.add(this.canvas, BorderLayout.CENTER);
         JPanel buttonPanel = new JPanel();
@@ -33,7 +32,6 @@ public class BounceFrame extends JFrame {
                     BallThread thread = new BallThread(b);
                     thread.start();
                     thread.setPriority(Thread.MIN_PRIORITY);
-                    //System.out.println("Thread name = " + thread.getName());
                 }
 
                 for (int i = 0; i < RED_BALLS_COUNT; i++){
@@ -43,7 +41,6 @@ public class BounceFrame extends JFrame {
                     BallThread thread = new BallThread(b);
                     thread.start();
                     thread.setPriority(Thread.MAX_PRIORITY);
-                    //System.out.println("Thread name = " + thread.getName());
                 }
             }
         });
