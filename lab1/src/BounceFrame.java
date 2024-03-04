@@ -7,6 +7,7 @@ public class BounceFrame extends JFrame {
     private BallCanvas canvas;
     public static final int WIDTH = 450;
     public static final int HEIGHT = 350;
+    public static final int BALLS_COUNT = 100;
 
     public BounceFrame () {
         this.setSize(WIDTH, HEIGHT);
@@ -24,7 +25,7 @@ public class BounceFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                for (int i = 0; i < 10; i++){
+                for (int i = 0; i < BALLS_COUNT; i++){
                     Ball b = new Ball(canvas);
                     canvas.add(b);
 
