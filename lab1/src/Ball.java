@@ -44,13 +44,14 @@ class Ball {
             dy = -dy;
         }
 
-        ((BallCanvas)this.canvas).checkPockets();
+        for (int i = 0; i < ((BallCanvas)this.canvas).pockets.size(); i++){
+            Pocket p = ((BallCanvas)this.canvas).pockets.get(i);
+            if (x >= p.getX() && x <= p.getX() + p.getWidth() && y >= p.getY() && y <= p.getY() + p.getHeight()){
+                this.isInPocket = true;
+            }
+        }
 
         this.canvas.repaint();
-    }
-
-    public void pocket(){
-        this.isInPocket = true;
     }
 
     public boolean isInPocket(){
@@ -59,13 +60,5 @@ class Ball {
 
     public void delete(){
         ((BallCanvas)this.canvas).removePocketedBalls();
-    }
-
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
     }
 }

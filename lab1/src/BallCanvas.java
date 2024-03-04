@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BallCanvas extends JPanel {
     private ArrayList<Ball> balls = new ArrayList<>();
-    private ArrayList<Pocket> pockets = new ArrayList<>();
+    ArrayList<Pocket> pockets = new ArrayList<>();
 
     public void add (Ball b){
         this.balls.add(b);
@@ -26,19 +26,7 @@ public class BallCanvas extends JPanel {
         }
     }
 
-    public void checkPockets(){
-        for (int i = 0; i < balls.size(); i++){
-            Ball b = balls.get(i);
-            for (int j = 0; j < pockets.size(); j++){
-                Pocket p = pockets.get(j);
-                if (b.getX() >= p.getX() && b.getX() <= p.getX() + p.getWidth() && b.getY() >= p.getY() && b.getY() <= p.getY() + p.getHeight()){
-                    b.pocket();
-                }
-            }
-        }
-    }
-
-    public void removePocketedBalls(){
+    public synchronized void removePocketedBalls(){
         for (int i = 0; i < balls.size(); i++){
             Ball b = balls.get(i);
             if (b.isInPocket()){
