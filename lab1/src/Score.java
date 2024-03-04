@@ -7,7 +7,7 @@ public class Score {
     }
 
     public static void setListener(ScoreListener listener){
-        listener = listener;
+        Score.listener = listener;
     }
 
     public static void increment(){
