@@ -20,6 +20,8 @@ public class BounceFrame extends JFrame {
         buttonPanel.setBackground(Color.lightGray);
         JButton buttonStart = new JButton("Start");
         JButton buttonStop = new JButton("Stop");
+        JLabel labelScore = new JLabel(String.format("Score: %d", Score.getScore()));
+
         buttonStart.addActionListener(new ActionListener() {
 
             @Override
@@ -42,10 +44,18 @@ public class BounceFrame extends JFrame {
                 System.exit(0);
             }
         });
+        Score.setListener(new ScoreListener() {
+            @Override
+            public void actionPerformed() {
+                labelScore.setText(String.format("Score: %d", Score.getScore()));
+                labelScore.repaint();
+            }
+        });
 
 
         buttonPanel.add(buttonStart);
         buttonPanel.add(buttonStop);
+        buttonPanel.add(labelScore);
 
         content.add(buttonPanel, BorderLayout.SOUTH);
     }

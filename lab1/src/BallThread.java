@@ -8,10 +8,17 @@ public class BallThread extends Thread {
     @Override
     public void run(){
         try{
-            for(int i = 1; i < 10000; i++){
+            while (!Thread.currentThread().isInterrupted()){
                 b.move();
                 System.out.println("Thread name = " + Thread.currentThread().getName());
-                Thread.sleep(5);
+
+                if (b.isInPocket()){
+                    Score.increment();
+                    b.delete();
+                    Thread.currentThread().interrupt();
+                }
+
+                Thread.sleep(10);
 
             }
         } catch (InterruptedException ex){

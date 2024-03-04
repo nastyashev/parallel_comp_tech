@@ -10,6 +10,7 @@ class Ball {
     private int y;
     private int dx = 2;
     private int dy = 2;
+    private boolean isInPocket = false;
 
     public Ball (Component c){
         this.canvas = c;
@@ -21,7 +22,6 @@ class Ball {
     public void draw (Graphics2D g2){
         g2.setColor(Color.darkGray);
         g2.fill(new Ellipse2D.Double(x, y, XSIZE, YSIZE));
-
     }
 
     public void move (){
@@ -43,6 +43,29 @@ class Ball {
             y = this.canvas.getHeight() - YSIZE;
             dy = -dy;
         }
+
+        ((BallCanvas)this.canvas).checkPockets();
+
         this.canvas.repaint();
+    }
+
+    public void pocket(){
+        this.isInPocket = true;
+    }
+
+    public boolean isInPocket(){
+        return this.isInPocket;
+    }
+
+    public void delete(){
+        ((BallCanvas)this.canvas).removePocketedBalls();
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 }
