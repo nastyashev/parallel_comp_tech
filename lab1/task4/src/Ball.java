@@ -11,15 +11,22 @@ class Ball {
     private int dx = 2;
     private int dy = 2;
 
-    public Ball (Component c){
+    private final Color color;
+
+    public Ball (Component c, Random random){
         this.canvas = c;
 
         x = new Random().nextInt(this.canvas.getWidth());
         y = new Random().nextInt(this.canvas.getHeight());
+
+        final float hue = random.nextFloat();
+        final float saturation = 0.5f;
+        final float luminance = 0.9f;
+        this.color = Color.getHSBColor(hue, saturation, luminance);
     }
 
     public void draw (Graphics2D g2){
-        g2.setColor(Color.darkGray);
+        g2.setColor(this.color);
         g2.fill(new Ellipse2D.Double(x, y, XSIZE, YSIZE));
     }
 

@@ -2,12 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 public class BounceFrame extends JFrame {
     private BallCanvas canvas;
     public static final int WIDTH = 450;
     public static final int HEIGHT = 350;
-    public static final int BALLS_COUNT = 5;
+    public static final int BALLS_COUNT = 10;
+    private final Random random = new Random();
 
     public BounceFrame () {
         this.setSize(WIDTH, HEIGHT);
@@ -29,7 +31,7 @@ public class BounceFrame extends JFrame {
                     @Override
                     public void run() {
                         for (int i = 0; i < BALLS_COUNT; i++){
-                            Ball b = new Ball(canvas);
+                            Ball b = new Ball(canvas, random);
                             canvas.add(b);
 
                             BallThread thread = new BallThread(b);
@@ -45,20 +47,6 @@ public class BounceFrame extends JFrame {
                     }
                 });
                 t.start();
-//                for (int i = 0; i < BALLS_COUNT; i++){
-//                    Ball b = new Ball(canvas);
-//                    canvas.add(b);
-//
-//                    BallThread thread = new BallThread(b);
-//                    thread.start();
-//                    System.out.println("Thread name = " + thread.getName());
-//
-//                    try {
-//                        thread.join();
-//                    } catch (InterruptedException ex) {
-//                        throw new RuntimeException(ex);
-//                    }
-//                }
             }
         });
         buttonStop.addActionListener(new ActionListener() {
