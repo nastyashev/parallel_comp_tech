@@ -18,7 +18,7 @@ public class Synchronize {
 
         System.out.print(character);
         count++;
-        isRunning = !isRunning;
+        this.isRunning = !isRunning;
         if (count%100 == 0) {
             System.out.println();
         }
