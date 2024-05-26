@@ -12,7 +12,7 @@ class Main {
     private static final int NRA = 62; // рядки матриці А
     private static final int NCA = 15; // стовпці матриці А
     private static final int NRB = NCA; // рядки матриці В
-    private static final int NCB = 7; // стовпці матриці В
+    private static final int NCB = 8; // стовпці матриці В
     private static final int NRC = NRA; // рядки матриці С
     private static final int NCC = NCB; // стовпці матриці С
     private static final int N_SEND = 128; // кількість елементів, які можна відправити за один раз
